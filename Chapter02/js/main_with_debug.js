@@ -1,3 +1,11 @@
+//initialize function called when the script loads
+function initialize(){
+    addColumns(cityPop);
+	addEvents();
+};
+
+
+
 var cityPop = [
 	{ 
 		city: 'Madison',
@@ -32,20 +40,20 @@ function addColumns(cityPop){
     			citySize = 'Small';
 
     		} else if (cityPop[i-1].population < 500000){
-    			citysize = 'Medium';
+    			citySize = 'Medium';
 
     		} else {
     			citySize = 'Large';
     		};
 
-			row.insertAdjacentHTML = '<td' + citySize + '</td>';
-    	};
+			row.insertAdjacentHTML('beforeend', '<td>' + citySize + '</td>');
+    	}
     });
-};
+}
 
 function addEvents(){
 
-	document.querySelector("table").addEventListener("mouseover", function(){
+	document.querySelector("table").addEventListener("mouseover", function() {
 		
 		var color = "rgb(";
 
@@ -53,17 +61,18 @@ function addEvents(){
 
 			var random = Math.round(Math.random() * 255);
 
-			color += "random";
+			color += random;
 
 			if (i<2){
 				color += ",";
 			
 			} else {
 				color += ")";
-		};
+			}
+		}
 
-		document.querySelector("table").color = color;
-	};
+		document.querySelector("table").style.color = color;
+	});
 
 	function clickme(){
 
@@ -71,5 +80,6 @@ function addEvents(){
 	};
 
 	document.querySelector("table").addEventListener("click", clickme);
-	});
 }
+
+document.addEventListener('DOMContentLoaded',initialize);
