@@ -25,6 +25,11 @@ var cityPop = [
 	}
 ];
 
+//create a table element
+var table = document.createElement("table");
+document.getElementById("mydiv").appendChild(table);
+	
+
 function addColumns(cityPop){
     
     document.querySelectorAll("tr").forEach(function(row, i){
