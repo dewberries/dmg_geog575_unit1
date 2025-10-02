@@ -27,7 +27,7 @@ var cityPop = [
 
 //create a table element
 var table = document.createElement("table");
-document.getElementById("mydiv").appendChild(table);
+document.querySelector("#mydiv").appendChild(table);
 	
 
 function addColumns(cityPop){
