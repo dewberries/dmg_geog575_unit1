@@ -1,9 +1,32 @@
+function initialize(){
+    createTable();
+    addColumns(cityPop);
+    addEvents();
+};
+
+
 var cityPop = [
 	{ city: 'Madison', population: 233209 },
 	{ city: 'Milwaukee', population: 594833 },
 	{ city: 'Green Bay', population: 104057 },
 	{ city: 'Superior', population: 27244 }
 ];
+
+
+function createTable(){
+    var table = document.createElement("table");
+    var headerRow = document.createElement("tr");
+    headerRow.insertAdjacentHTML('beforeend', '<th>City</th><th>Population</th>');
+    table.appendChild(headerRow);
+
+    for (var i = 0; i < cityPop.length; i++){
+        var tr = document.createElement("tr");
+        tr.insertAdjacentHTML('beforeend', '<td>' + cityPop[i].city + '</td><td>' + cityPop[i].population + '</td>');
+        table.appendChild(tr);
+    }
+
+    document.querySelector("#mydiv").appendChild(table);
+}
 
 function addColumns(cityPop){
 	document.querySelectorAll("tr").forEach(function(row, i){
@@ -55,3 +78,5 @@ function addEvents(){
 
 	table.addEventListener("click", clickme);
 };
+
+document.addEventListener('DOMContentLoaded', initialize);
