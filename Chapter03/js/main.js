@@ -84,3 +84,24 @@ function addEvents(){
 };
 // Call the initialize function when the DOM content is fully loaded
 document.addEventListener('DOMContentLoaded', initialize);
+
+
+
+function debugCallback(response){
+	response.json().then(function(myData) {
+		document.querySelector("#mydiv").insertAdjacentHTML('beforeend', '<br><br>GeoJSON data: <br>' + JSON.stringify(myData));
+});
+}
+
+function debugAjax(){
+	
+	var myData;
+	
+	fetch("data/MegaCities.geojson")
+		.then(function(response){
+			debugCallback(response);
+		})
+
+};
+
+debugAjax();
